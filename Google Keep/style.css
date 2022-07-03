@@ -266,7 +266,7 @@ border-radius: 5rem;
     border-width: 1px;
 
 }
-#delte{
+.notes > #delte{
     position: relative;
     top:1rem;
     left:30rem;
@@ -274,7 +274,7 @@ border-radius: 5rem;
     width: 3rem;
     font-size: 10px;
 }
-#edit{
+.notes > #edit{
     position: relative;
     top:1rem;
     left:30.7rem;

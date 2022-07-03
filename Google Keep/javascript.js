@@ -9,6 +9,7 @@ addBtn.addEventListener("click", function(e) {
   if (notes == null) {
     notesObj = [];
   } else {
+    
     notesObj = JSON.parse(notes);
   }
   let myObj = {
@@ -22,3 +23,24 @@ addBtn.addEventListener("click", function(e) {
 //   console.log(notesObj);
   showNotes();
 });
+function showNotes(){
+  let notes=localStorage.getItem("notes");
+  if(notes==null){
+    notesObj=[];
+  }
+  else{
+    notesObj=Json.stringyfiy(notes);
+  }
+  let display="";
+  notesObj.forEach(function(element,index){
+    // display +=`
+    // <div class="note">
+    // <p class="note-counter">""</p>
+    // <h3>Todays date</h3>
+    // <p>2nd of july 2022</p>
+    // <button id="delete">Delete</button>
+    // <button id="edit">Edit</button>
+  `;
+  })
+  }
+}
