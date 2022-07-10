@@ -33,7 +33,7 @@
                 <div class="form">
                   <i class="fa fa-search"></i>
                   <input type="text" class="form-control form-input" placeholder="Search ">
-                  <span class="left-pan"><i class="fa fa-microphone"></i></span>
+                  <!-- <span class="left-pan"><i class="fa fa-microphone"></i></span> -->
                 </div>
                 
               </div>
@@ -61,25 +61,33 @@
     </div>
     </div>
 
-  <div class="contains">
-    <div class="frm-group">
-       <input type="text" id="ft" class="form-title" placeholder="Title">
-       <textarea id="note-text" placeholder="Take a note..." ></textarea>
-     </div>
-     <button id="add-button">Close</button>
-  </div>
+    <header>
+      <div class="container">
+        <form action="">
+            <input type="text" id="note-title" placeholder="Title">
+            <textarea id="note-text" placeholder="Take a note..."></textarea>
+        
+            <button id="add-btn">Close</button>
+        </form>
+    </div>
+</header>
 
 <section>
-    <div class="mention">
-      <div class="notes">
-                <p class="note-counter">""</p>
-                <h3>Todays date</h3>
-                <p>2nd of july 2022</p>
-                <button id="delete">Delete</button>
-                <button id="edit">Edit</button>
+    <div class="container">
+
+        <div id="notes">
+    
+                <div class="note">
+                    <h3 class="note-title"> $element.title </h3>
+                    <p class="note-text"> $element.text</p>
+                    <button class="note-btn">Delete</button>
+                    <button class="edit-btn">Edit</button>
+                </div>
+            
         </div>
-      </div>
+    </div>
 </section>
+
    <script src="javascript.js"></script>
 </body>
 </html>
