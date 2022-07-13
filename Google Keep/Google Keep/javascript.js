@@ -1,12 +1,10 @@
-let addBtn = document.getElementById("add-btn");
+let addButton = document.getElementById("add-btn");
 addBtn.addEventListener("click", function(e) {
 
   let addTitle = document.getElementById("note-title");
   let addTxt = document.getElementById("note-text");
   
-    // if (addTitle.value == "" || addTxt.value == "") {
-    //     return alert("Please add Note Title and Details")
-    // }
+  
 
   let notes = localStorage.getItem("notes");
   if (notes == null) {
@@ -22,12 +20,11 @@ addBtn.addEventListener("click", function(e) {
   localStorage.setItem("notes", JSON.stringify(notesObj));
   addTxt.value = "";
   addTitle.value = "";
-//   console.log(notesObj);
-  showNotes();
+displayNotes();
 });
 
 // Function to show elements from localStorage
-function showNotes() {
+function displayNotes() {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
     notesObj = [];
@@ -67,8 +64,8 @@ function deleteNote(index) {
 
         notesObj.splice(index, 1);
         localStorage.setItem("notes", JSON.stringify(notesObj));
-        showNotes();
+        displayNotes();
     }
   
 }
-showNotes();
+displayNotes();
