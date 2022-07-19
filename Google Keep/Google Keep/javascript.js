@@ -1,71 +1,110 @@
-let addButton = document.getElementById("add-btn");
-addBtn.addEventListener("click", function(e) {
 
-  let addTitle = document.getElementById("note-title");
-  let addTxt = document.getElementById("note-text");
-  
-  
+const noteContainer = document.querySelector('.note-container');
+const modalContainer = document.querySelector('.modal-container');
+const form = document.querySelector('form');
+const titleInput = document.querySelector('#title');
 
-  let notes = localStorage.getItem("notes");
-  if (notes == null) {
-    notesObj = [];
-  } else {
-    notesObj = JSON.parse(notes);
-  }
-  let myObj = {
-    title: addTitle.value,
-    text: addTxt.value
-  }
-  notesObj.push(myObj);
-  localStorage.setItem("notes", JSON.stringify(notesObj));
-  addTxt.value = "";
-  addTitle.value = "";
-displayNotes();
-});
-
-// Function to show elements from localStorage
-function displayNotes() {
-  let notes = localStorage.getItem("notes");
-  if (notes == null) {
-    notesObj = [];
-  } else {
-    notesObj = JSON.parse(notes);
-  }
-  let html = "";
-  notesObj.forEach(function(element, index) {
-    html += `
-        <div class="note">
-          
-            <h3 class="note-title"> ${element.title} </h3>
-            <p class="note-text"> ${element.text}</p>
-            <button id="${index}"onclick="deleteNote(this.id)" class="note-btn">Delete Note</button>
-            <button id="${index}"onclick="editNote(this.id)" class="note-btn edit-btn">Edit Note</button>
-        </div>
-            `;
-  });
-  let notesElm = document.getElementById("notes");
-  if (notesObj.length != 0) {
-    notesElm.innerHTML = html;
-  } else {
-    notesElm.innerHTML = `No Notes Yet! Add a note using the form above.`;
+// Class: for creating a  new  note
+class Note {
+  constructor(title, body) {
+    this.title = title;
+    this.body = body;
+    this.id = Math.random();
   }
 }
 
-// Function to delete a note
-function deleteNote(index) {
-    let confirmDel = confirm();
-    if (confirmDel == true) {
-        let notes = localStorage.getItem("notes");
-        if (notes == null) {
-            notesObj = [];
-        } else {
-            notesObj = JSON.parse(notes);
-        }
+/// /LOCAL STORAGE////
+// Function: Retreive notes from local storage
+function getNotes(){
+  let notes;
+  if(localStorage.getItem('noteApp.notes') === null){
+    notes = [];
+  } else {
+    notes = JSON.parse(localStorage.getItem('noteApp.notes'));
+  }
+  return notes;
+}
 
-        notesObj.splice(index, 1);
-        localStorage.setItem("notes", JSON.stringify(notesObj));
-        displayNotes();
+// Function: Add a note to local storage
+function addNotesToLocalStorage(note){
+  const notes = getNotes();
+  notes.push(note);
+  localStorage.setItem('noteApp.notes', JSON.stringify(notes));
+}
+
+// Function: remove a note  from local storage
+function removeNote(id){
+  const notes = getNotes();
+  notes.forEach((note, index) => {
+    if (note.id === id){
+      notes.splice(index, 1);
     }
-  
+    localStorage.setItem('noteApp.notes', JSON.stringify(notes));
+  })
 }
-displayNotes();
+
+/// /UI UPDATES////
+// Function: Create new note in UI
+function addNoteToList(note) {
+  const newUINote = document.createElement('div');
+  newUINote.classList.add('note');
+  newUINote.innerHTML = `
+    <span hidden>${note.id}</span>
+    <h2 class="note__title">${note.title}</h2>
+    <p class="note__body">${note.body}</p>
+    <div class="note__btns">
+      <button class="note__btn note__view">View Detail</button>
+      <button class="note__btn note__delete">Delete Note</button>
+    </div>
+  `;
+  noteContainer.appendChild(newUINote);
+}
+
+// Function: Show notes in UI
+function displayNotes(){
+  const notes = getNotes();
+  notes.forEach(note => {
+    addNoteToList(note);
+  })
+}
+
+// Event: Close Modal
+const modalBtn = document.querySelector('.modal__btn').addEventListener('click', () => {
+  modalContainer.classList.remove('active');
+})
+
+// Event: Note Buttons
+noteContainer.addEventListener('click', (e) => {
+  if(e.target.classList.contains('note__view')){
+    const currentNote = e.target.closest('.note');
+    const currentTitle = currentNote.querySelector('.note__title').textContent;
+    const currentBody = currentNote.querySelector('.note__body').textContent;
+    activateNoteModal(currentTitle, currentBody);
+  }
+  if(e.target.classList.contains('note__delete')){
+    const currentNote = e.target.closest('.note');
+    // showAlertMessage('Your note was permanently deleted', 'remove-message');
+    currentNote.remove();
+    const id = currentNote.querySelector('span').textContent;
+    removeNote(Number(id))
+  }
+})
+
+// Event: Display Notes
+document.addEventListener('DOMContentLoaded', displayNotes)
+
+// Event: Note Form Submit
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const noteInput = document.querySelector('#note');
+  
+  // validate inputs
+  if(titleInput.value.length > 0 && noteInput.value.length > 0){
+    const newNote = new Note(titleInput.value, noteInput.value);
+    addNoteToList(newNote);
+    addNotesToLocalStorage(newNote);
+    titleInput.value = '';
+    noteInput.value = '';
+    titleInput.focus();
+  } 
+});
