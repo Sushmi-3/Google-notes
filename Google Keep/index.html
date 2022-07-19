@@ -60,33 +60,27 @@
         <button id="btn"><i class="fa fa-trash-o" style="font-size:22px"></i>Bin</button>
     </div>
     </div>
-
-    <header>
-      <div class="container">
-        <form action="">
-            <input type="text" id="note-title" placeholder="Title">
-            <textarea id="note-text" placeholder="Take a note..."></textarea>
-        
-            <button id="add-btn">Close</button>
-        </form>
-    </div>
-</header>
-
-<section>
-    <div class="container">
-
-        <div id="notes">
-    
-                <div class="note">
-                    <h3 class="note-title"> $element.title </h3>
-                    <p class="note-text"> $element.text</p>
-                    <button class="note-btn">Delete</button>
-                    <button class="edit-btn">Edit</button>
-                </div>
-            
-        </div>
-    </div>
-</section>
+<!-- 
+    <header> -->
+        <div class="modal-container">
+            <div class="modal">
+              <button class="modal__btn">&times;</button>
+              <h2 class="modal__title"></h2>
+              <p class="modal__body"></p>
+            </div>
+          </div>
+          <div class="form-container">
+            <!-- <h1>Note Taker</h1>
+            <h3>Add a  New Note:</h3> -->
+            <form>
+                <input type="text"id="title" placeholder="Enter a note title.">
+                <textarea type="text" id="note" cols="30" rows="10" placeholder="Enter note text."></textarea>
+              <!-- <input type="submit"> -->
+              <button class="save-btn">Save</button>
+            </form>
+          </div>
+          <div class="note-container">
+          </div>
 
    <script src="javascript.js"></script>
 </body>
