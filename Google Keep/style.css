@@ -233,7 +233,7 @@ border-radius: 5rem;
     position: relative;
     right:16rem;
     bottom:59.5rem;
-    background-color: white;
+    background-color: lightgray;
     border-style: none;
     cursor: pointer;
   }
@@ -244,8 +244,20 @@ border-radius: 5rem;
   .note-container{
     position: relative;
     left:26rem;
-    bottom:55rem;
-    width: 10rem;
-    border-color: red;
+    /* border:1px solid lightgray; */
+    bottom:56rem;
+    width: 35rem;
+   
   }
-  
+  .note__edit{
+      position: relative;
+      bottom:.2rem;
+      left:25rem;
+      width:4rem;
+  }
+  .note__delete{
+    position: relative;
+    left:26rem;
+    bottom:.3rem;
+    width:4rem;
+  }

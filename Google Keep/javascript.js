@@ -3,6 +3,7 @@ const noteContainer = document.querySelector('.note-container');
 const modalContainer = document.querySelector('.modal-container');
 const form = document.querySelector('form');
 const titleInput = document.querySelector('#title');
+const editNote=document.querySelector('note__btn note__edit');
 
 // Class: for creating a  new  note
 class Note {
@@ -42,7 +43,17 @@ function removeNote(id){
     localStorage.setItem('noteApp.notes', JSON.stringify(notes));
   })
 }
+function editNote(index) {
+  let notes = localStorage.getItem("notes");
+  let addTitle = document.getElementById("note-title");
+  let addTxt = document.getElementById("note-text");
 
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+  console.log(notesObj);
 /// /UI UPDATES////
 // Function: Create new note in UI
 function addNoteToList(note) {
@@ -53,8 +64,8 @@ function addNoteToList(note) {
     <h2 class="note__title">${note.title}</h2>
     <p class="note__body">${note.body}</p>
     <div class="note__btns">
-      <button class="note__btn note__view">View Detail</button>
-      <button class="note__btn note__delete">Delete Note</button>
+      <button class="note__btn note__edit">Edit</button>
+      <button class="note__btn note__delete">Delete</button>
     </div>
   `;
   noteContainer.appendChild(newUINote);
