@@ -261,3 +261,9 @@ border-radius: 5rem;
     bottom:.3rem;
     width:4rem;
   }
+  .note{
+      opacity: 0;
+      pointer-events: none;
+      transition: all 25s ease;
+  }
+  

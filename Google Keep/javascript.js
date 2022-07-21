@@ -3,8 +3,12 @@ const noteContainer = document.querySelector('.note-container');
 const modalContainer = document.querySelector('.modal-container');
 const form = document.querySelector('form');
 const titleInput = document.querySelector('#title');
-const editNote=document.querySelector('note__btn note__edit');
+const titleClose=document.querySelector('title');
+titlePop=document.querySelector('.note');
 
+titleClose.addEventListener("click", ()=> {
+  titlePop.classList.add("show");
+});
 // Class: for creating a  new  note
 class Note {
   constructor(title, body) {
@@ -37,34 +41,24 @@ function addNotesToLocalStorage(note){
 function removeNote(id){
   const notes = getNotes();
   notes.forEach((note, index) => {
-    if (note.id === id){
+    if (noteId === id){
       notes.splice(index, 1);
     }
     localStorage.setItem('noteApp.notes', JSON.stringify(notes));
   })
 }
-function editNote(index) {
-  let notes = localStorage.getItem("notes");
-  let addTitle = document.getElementById("note-title");
-  let addTxt = document.getElementById("note-text");
 
-  if (notes == null) {
-    notesObj = [];
-  } else {
-    notesObj = JSON.parse(notes);
-  }
-  console.log(notesObj);
 /// /UI UPDATES////
 // Function: Create new note in UI
 function addNoteToList(note) {
   const newUINote = document.createElement('div');
   newUINote.classList.add('note');
   newUINote.innerHTML = `
-    <span hidden>${note.id}</span>
+    <span hidden>${noteId}</span>
     <h2 class="note__title">${note.title}</h2>
     <p class="note__body">${note.body}</p>
     <div class="note__btns">
-      <button class="note__btn note__edit">Edit</button>
+      <button onclick="editNote(${index},'${note.title}','${note.body}')" class="note__btn note__edit">Edit</button>
       <button class="note__btn note__delete">Delete</button>
     </div>
   `;
@@ -79,6 +73,13 @@ function displayNotes(){
   })
 }
 
+//Function to edit a note
+function editNote(noteId,title,note){
+  noteContainer.click();
+  title.value=title;
+  note.value=note;
+console.log(noteId,title,body)
+}
 // Event: Close Modal
 const modalBtn = document.querySelector('.modal__btn').addEventListener('click', () => {
   modalContainer.classList.remove('active');
