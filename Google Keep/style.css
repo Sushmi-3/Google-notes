@@ -1,153 +1,154 @@
 *{
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .all-link{
-    height: 20vh;
-    width: 100vw;
-    display: grid;
-    grid-template-columns: 20px 20px 20px;
-    justify-content: space-around;
+  height: 20vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 20px 20px 20px;
+  justify-content: space-around;
 }
 .all-link3 > img{
-    height: 40px;
-    width:32px;
-    position: relative;
-    bottom:3.5rem;
-    left:5rem;
+  height: 40px;
+  width:32px;
+  position: relative;
+  bottom:3.5rem;
+  left:5rem;
 }
 .all-link1 > img{
-    height:60px;
-    width:60px;
-    position: relative;
-    left:1rem;
+  height:60px;
+  width:60px;
+  position: relative;
+  left:1rem;
 }
 .all-link3 > h3{
-    position: relative;
-    color: #616771;
-    bottom:6.6rem;
-    left:8.5rem;
+  position: relative;
+  color: #616771;
+  bottom:6.6rem;
+  left:8.5rem;
 }
 .all-link3.toggle{
-    visibility: hidden;
-    color: #383838;
-    width: 160px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
+  visibility: hidden;
+  color: #383838;
+  width: 160px;
+background-color: #555;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 8px 0;
 }
 .all-link3.toggle:hover{
-    visibility: visible;
+  visibility: visible;
 }
 .form{
 
-    position: relative;
-    left:17rem;
-    bottom:9.8rem;
+  position: relative;
+  left:17rem;
+  bottom:9.8rem;
 }
 
 .form .fa-search{
 
-    position: absolute;
-    height: 9rem;
-    top:16px;
-    left: 20px;
-    color: #9ca3af;
+  position: absolute;
+  height: 9rem;
+  top:16px;
+  left: 20px;
+  color: #9ca3af;
 
 }
 
 .form span{
 
-    position: absolute;
-    right: 17px;
-    top: 13px;
-    padding: 2px;
-    border-left: 1px solid #d1d5db;
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db;
 
 }
 
 .left-pan{
-    padding-left: 7px;
+  padding-left: 7px;
 }
 
 .left-pan i{
-   
-   padding-left: 40px;
+ 
+ padding-left: 40px;
 }
 
 .form-input{
 
-    height: 48px;
-    width:40rem;
-    text-indent: 50px;
-    border-style: none;
-    border-radius: 10px;
-    background-color:#F5F5F5 ;
+  height: 48px;
+  width:40rem;
+  position: relative;
+  right:7rem;
+  text-indent: 50px;
+  border-style: none;
+  border-radius: 10px;
+  background-color:#F5F5F5 ;
 }
 
 .form-input:focus{
 
-    box-shadow: none;
-    border-style:none;
+  box-shadow: none;
+  border-style:none;
 }
 .line{
-    height: .7px;
-    width:200vw;
-    background-color: #9ca3af;
-    position: relative;
-    bottom:9.3rem;
+  height: .7px;
+  width:200vw;
+  background-color: #9ca3af;
+  position: relative;
+  bottom:9.3rem;
 }
 .left-items{
-    height: 100vh;
-    width: 100vw;
-    position:relative;
-    bottom:9rem;
-    right:1.5rem;
+  height: 100vh;
+  width: 100vw;
+  position:relative;
+  bottom:9rem;
+  right:1.5rem;
 }
 .notes > button{
-    height:50px;
-    width:17.5rem;
-    font-size: 18px;
-    padding-right: 1.2rem;
-    text-align: center;
-    font-family: Source Sans Pro;
-    background-color: white;
-    border-radius: 40px;
-    border: none;
+  height:50px;
+  width:17.5rem;
+  font-size: 18px;
+  padding-right: 1.2rem;
+  text-align: center;
+  font-family: Source Sans Pro;
+  background-color: white;
+  border-radius: 40px;
+  border: none;
 }
 .notes > button:hover{
-    background-color:#D3D3D3;
+  background-color:#D3D3D3;
 }
 .fa-lightbulb-o{
-    position: relative;
-    color: #383838;
-    right:2.5rem;
-    border-radius: 5rem;
+  position: relative;
+  color: #383838;
+  right:2.5rem;
+  border-radius: 5rem;
 }
 .remainder > button{
-    height:50px;
-    width:17rem;
-    font-size: 18px;
-    text-align:center;
-    padding-left: 1rem;
-    font-family: Source Sans Pro;
-    background-color: white;
-    border-radius: 40px;
-    border: none;
+  height:50px;
+  width:17rem;
+  font-size: 18px;
+  text-align:center;
+  padding-left: 1rem;
+  font-family: Source Sans Pro;
+  background-color: white;
+  border-radius: 40px;
+  border: none;
 }
 .remainder > button:hover{
-    background-color:#D3D3D3;
+  background-color:#D3D3D3;
 }
 .fa-bell-o{
-        position: relative;
-        color: #383838;
-        right:2.5rem;
-        border-radius: 5rem;
-    }
-
-.Edit-labels > button{
+      position: relative;
+      color: #383838;
+      right:2.5rem;
+      border-radius: 5rem;
+  }
+  .Edit-labels > button{
     height:50px;
     width:17rem;
     font-size: 18px;
@@ -157,17 +158,17 @@
     background-color: white;
     border-radius: 40px;
     border: none;
-}
-.Edit-labels > button:hover{
+  }
+  .Edit-labels > button:hover{
     background-color:#D3D3D3;
-}
-.fa-pencil{
+  }
+  .fa-pencil{
     position: relative;
     color: #383838;
     right:2.5rem;
     border-radius: 5rem;  
-}
-.Archive > button{
+  }
+  .Archive > button{
     height:50px;
     width:17rem;
     font-size: 18px;
@@ -177,18 +178,18 @@
     background-color: white;
     border-radius: 40px;
     border: none;
-}
-.Archive > button:hover{
+  }
+  .Archive > button:hover{
     background-color:#D3D3D3;
-}
-.fa-archive{
+  }
+  .fa-archive{
     position: relative;
     color: #383838;
     right:2.5rem;
     border-radius: 5rem;  
-}
-
-.bin > button{
+  }
+  
+  .bin > button{
     height:50px;
     width:17rem;
     font-size: 18px;
@@ -198,72 +199,148 @@
     background-color: white;
     border-radius: 40px;
     border: none;
-}
-.bin > button:hover{
+  }
+  .bin > button:hover{
     background-color:#D3D3D3;
-}
-.fa-trash-o{
-position: relative;
-color: #383838;
-right:2.5rem;
-border-radius: 5rem;  
-}
+  }
+  .fa-trash-o{
+  position: relative;
+  color: #383838;
+  right:2.5rem;
+  border-radius: 5rem;  
+  }
 
-  #title{
-   height:3rem;
-   width: 35rem;
-   bottom:68rem;
-   border-radius: 10px;
-   border-color: lightcyan;
-   position: relative;
-   left: 26rem;
-  }
-  #note{
-    border-radius: 10px;
-    position: relative;
-    bottom:57.9rem;
-    border-color: lightcyan;
-    right:9.4rem;
-    height: 9rem;
-    width: 35rem;
-  }
-  .save-btn{
-    height:30px;
-    width:80px;
-    position: relative;
-    right:16rem;
-    bottom:59.5rem;
-    background-color: lightgray;
-    border-style: none;
-    cursor: pointer;
-  }
-  .save-btn :hover{
-    background-color: lightgray;
   
+  /* UTILITY */
+  .p-small {
+      padding-bottom: 5px;
   }
-  .note-container{
-    position: relative;
-    left:26rem;
-    /* border:1px solid lightgray; */
-    bottom:56rem;
-    width: 35rem;
-   
+  .p-medium {
+      padding-bottom: 10px;
   }
-  .note__edit{
+  .p-y {
+      padding: 10px 0;
+  }
+  .m-y {
+      margin: 10px 0;
+  }
+  
+  p {
+      font-size: 1.6rem;
+      line-height: 1.5;
+  }
+  
+  img {
+      width: 100%;
+  }
+  
+  .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+  
+  header h1 {
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      line-height: 2;
+  }
+  
+  header form {
+      display: flex;
+      flex-direction: column;
+      width: 30rem;
+  }
+  
+  form > * {
+      margin-bottom: 5px;
+      outline: none;
+      font-size: 1.2rem;
+      padding: 7px;
+      border: 1px solid #777;
+      border-radius: 3px;
+  }
+  
+  form textarea {
+      padding: 7px 0 40px 5px;
+      font-size: 1.2rem;
+      font-family: inherit;
+  }
+  
+  ::placeholder {
+      font-size: 1rem;
+  }
+  
+  form button {
+      background-color:lightgray;
+      color: #fff;
+      width:5rem;
       position: relative;
-      bottom:.2rem;
-      left:25rem;
-      width:4rem;
-  }
-  .note__delete{
-    position: relative;
-    left:26rem;
-    bottom:.3rem;
-    width:4rem;
-  }
-  .note{
-      opacity: 0;
-      pointer-events: none;
-      transition: all 25s ease;
+      bottom:56.7em;
+      left:14.0rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all .3s;
   }
   
+  .note {
+      padding: 1rem;
+      /* border: 1px solid #777; */
+      border: #777 1px solid;
+      border-radius: 3px;
+      width:40rem;
+      border-radius: 10px;
+      margin: 1rem 0;
+  
+  }
+  
+  .note-counter,
+  .note-text {
+      font-size: 1.2rem;
+  }
+  
+  #note-title {
+      font-size: 1.5rem;
+      color: var(--black);
+      width:40rem;
+      bottom:55rem;
+      left:20rem;
+      position: relative;
+      border-radius: 10px;
+      border-bottom-style:none ;
+  }
+  #note-text{
+    height:8em;
+    width:40rem;
+    position: relative;
+    bottom:55rem;
+    left:20rem;
+    border-top-style:none ;
+    border-radius: 10px;
+  }
+  .note-btn {
+      padding: 5px;
+      margin-top: 5px;
+      font-size: .8rem;
+      position: relative;
+      left:29rem;
+      width:3rem;
+      background-color:lightgray;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+  }
+  
+  .edit-btn {
+      background-color:lightgray;
+      width:3rem;
+  }
+  #notes{
+    position: relative;
+    bottom:51rem;
+    left:20rem;
+  }
