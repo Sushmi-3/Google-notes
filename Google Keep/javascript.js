@@ -1,122 +1,123 @@
+function red(){
+  document.getElementById('text').style.background ="LightCoral";
+  // let isUpdate=true;
+}
 
-const noteContainer = document.querySelector('.note-container');
-const modalContainer = document.querySelector('.modal-container');
-const form = document.querySelector('form');
-const titleInput = document.querySelector('#title');
-const titleClose=document.querySelector('title');
-titlePop=document.querySelector('.note');
+function blue(){
+  document.getElementById('text').style.background ="LightCoral";
+  // let isUpdate=false;
+}
 
-titleClose.addEventListener("click", ()=> {
-  titlePop.classList.add("show");
+const addBox =document.querySelector(".add-box"),
+popupBox = document.querySelector(".popup-box");
+
+popupTitle = popupBox.querySelector("header p");
+closeIcon = popupBox.querySelector("header i");
+titleTag = popupBox.querySelector("input"),
+desTag = popupBox.querySelector(".des"),
+addBtn = popupBox.querySelector("button");
+
+const notes =JSON.parse(localStorage.getItem("notes")||"[]"); 
+
+addBox.addEventListener("click",()=>{
+ 
+  popupBox.classList.add("show");
 });
-// Class: for creating a  new  note
-class Note {
-  constructor(title, body) {
-    this.title = title;
-    this.body = body;
-    this.id = Math.random();
+
+addBtn.addEventListener("click",v=>{
+  v.preventDefault();
+  let noteTitle = titleTag.value,
+  noteDesc =desTag.value;
+  if(noteTitle || noteDesc){
+      
+      let noteInfo ={
+          title:noteTitle,description:noteDesc
+      }
+      if(!isUpdate){
+          notes.push(noteInfo);
+      }
+      else{
+          isUpdate=false;
+          notes[updateId]=noteInfo;
+      }
+      
+      notes.push(noteInfo);//adding new note to notes
+      //saving notes to localstorage
+      localStorage.setItem("notes",JSON.stringify(notes));
+      closeIcon.click();
+      showNotes();
   }
-}
-
-/// /LOCAL STORAGE////
-// Function: Retreive notes from local storage
-function getNotes(){
-  let notes;
-  if(localStorage.getItem('noteApp.notes') === null){
-    notes = [];
-  } else {
-    notes = JSON.parse(localStorage.getItem('noteApp.notes'));
-  }
-  return notes;
-}
-
-// Function: Add a note to local storage
-function addNotesToLocalStorage(note){
-  const notes = getNotes();
-  notes.push(note);
-  localStorage.setItem('noteApp.notes', JSON.stringify(notes));
-}
-
-// Function: remove a note  from local storage
-function removeNote(id){
-  const notes = getNotes();
-  notes.forEach((note, index) => {
-    if (noteId === id){
-      notes.splice(index, 1);
-    }
-    localStorage.setItem('noteApp.notes', JSON.stringify(notes));
-  })
-}
-
-/// /UI UPDATES////
-// Function: Create new note in UI
-function addNoteToList(note) {
-  const newUINote = document.createElement('div');
-  newUINote.classList.add('note');
-  newUINote.innerHTML = `
-    <span hidden>${noteId}</span>
-    <h2 class="note__title">${note.title}</h2>
-    <p class="note__body">${note.body}</p>
-    <div class="note__btns">
-      <button onclick="editNote(${index},'${note.title}','${note.body}')" class="note__btn note__edit">Edit</button>
-      <button class="note__btn note__delete">Delete</button>
-    </div>
-  `;
-  noteContainer.appendChild(newUINote);
-}
-
-// Function: Show notes in UI
-function displayNotes(){
-  const notes = getNotes();
-  notes.forEach(note => {
-    addNoteToList(note);
-  })
-}
-
-//Function to edit a note
-function editNote(noteId,title,note){
-  noteContainer.click();
-  title.value=title;
-  note.value=note;
-console.log(noteId,title,body)
-}
-// Event: Close Modal
-const modalBtn = document.querySelector('.modal__btn').addEventListener('click', () => {
-  modalContainer.classList.remove('active');
-})
-
-// Event: Note Buttons
-noteContainer.addEventListener('click', (e) => {
-  if(e.target.classList.contains('note__view')){
-    const currentNote = e.target.closest('.note');
-    const currentTitle = currentNote.querySelector('.note__title').textContent;
-    const currentBody = currentNote.querySelector('.note__body').textContent;
-    activateNoteModal(currentTitle, currentBody);
-  }
-  if(e.target.classList.contains('note__delete')){
-    const currentNote = e.target.closest('.note');
-    // showAlertMessage('Your note was permanently deleted', 'remove-message');
-    currentNote.remove();
-    const id = currentNote.querySelector('span').textContent;
-    removeNote(Number(id))
-  }
-})
-
-// Event: Display Notes
-document.addEventListener('DOMContentLoaded', displayNotes)
-
-// Event: Note Form Submit
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const noteInput = document.querySelector('#note');
+      
   
-  // validate inputs
-  if(titleInput.value.length > 0 && noteInput.value.length > 0){
-    const newNote = new Note(titleInput.value, noteInput.value);
-    addNoteToList(newNote);
-    addNotesToLocalStorage(newNote);
-    titleInput.value = '';
-    noteInput.value = '';
-    titleInput.focus();
-  } 
+})
+
+
+let isUpdate = false,updateId;
+function updateNote(noteId,title,desc){
+  isUpdate =true;
+  updateId=noteId; 
+  addBox.click();
+  titleTag.value =title;
+  desTag.value =desc;
+  addBtn.innerText ="update note";
+  // popupTitle.innerText ="update a note";
+  console.log(noteId,title,desc);
+}
+
+
+function deleteNote(noteId){
+  notes.splice(noteId,1);
+  localStorage.setItem("notes",JSON.stringify(notes));
+  showNotes();
+}
+function showNotes(){
+  document.querySelectorAll(".note").forEach(note=>note.remove());
+  notes.forEach((note,index)=>{
+      let liTag=`<li class="note">
+      <div class="details">
+        <p>${note.title}</p>
+        <span>${note.description}</span>
+      </div>
+      <div class="bottom-content">
+       
+        <div class="settings">
+          <i onclick="showMenu(this)"class="uil uil-ellipsis-h"></i>
+          <ul class="menu">
+            <li onclick ="updateNote(${index},'${note.title}','${note.description}')">
+            <i class="uil uil-pen"></i>edit</li>
+            <li onclick ="deleteNote(${index})"><i class="uil uil-trash"></i>delete</li>
+          </ul>
+        </div>
+      </div>
+    </li>`
+    addBox.insertAdjacentHTML("afterend",liTag);
+  });
+}
+showNotes();
+
+function showMenu(choose){
+  choose.parentElement.classList.add("show");
+  document.addEventListener("click",e =>{
+      if(e.target.tagName !="I" || e.target !=choose){
+          choose.parentElement.classList.remove("show");
+      }
+  });
+}
+
+closeIcon.addEventListener("click",()=>{
+  ISUpdate =false;
+  titleTag.value ="";
+  desTag.value ="";
+ 
+  popupBox.classList.remove("show");
 });
+
+function updateNote(noteId,title,desc){
+  isUpdate =true;
+  updateId=noteId; 
+  addBox.click();
+  titleTag.value =title;
+  desTag.value =desc;
+
+  console.log(noteId,title,desc);
+}
